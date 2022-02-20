@@ -33,6 +33,7 @@ public class AppoitmentQuary {
     private PreparedStatement getTodaysAppoitments;
     private PreparedStatement bookAppoitment;
     private PreparedStatement checkIfBooked;
+    private PreparedStatement numberOfAppoitmentsOnDate;
 
     AppoitmentQuary() {
         try {
@@ -42,10 +43,27 @@ public class AppoitmentQuary {
             bookAppoitment = connection.prepareStatement("INSERT INTO clinicdb.appoitment (time,date,patiantID,patiantName,doctorID,doctorName) "
                     + " VALUES (?,?,?,?,?,?)");
             checkIfBooked = connection.prepareStatement("SELECT * FROM clinicdb.appoitment WHERE TIME =? AND DATE =? and doctorID= ?");
+            numberOfAppoitmentsOnDate = connection.prepareStatement("SELECT COUNT(*) FROM clinicdb.appoitment where date =? and patiantID=?");
 
         } catch (SQLException ex) {
             Logger.getLogger(AppoitmentQuary.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public int getNumberOfBookingsOnDate(Date date, int ID) {
+
+        try {
+            numberOfAppoitmentsOnDate.setDate(1, (java.sql.Date) date);
+            numberOfAppoitmentsOnDate.setInt(2, ID);
+            ResultSet resultSet = numberOfAppoitmentsOnDate.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getRow();
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AppoitmentQuary.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
     }
 
     public ObservableList<Appoitment> getAllAppoitments() {

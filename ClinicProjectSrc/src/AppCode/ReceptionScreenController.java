@@ -187,7 +187,7 @@ public class ReceptionScreenController implements Initializable {
 
     @FXML
     private void logOut(ActionEvent event) throws IOException {
-        File file = new File("D:\\1-Desktop\\uni\\Year 3\\Advanced Programming Practical\\Clinic Project\\logs\\" + date.format(now) + ".txt");
+        File file = new File("Clinic Project\\logs\\" + date.format(now) + ".txt");
 
         FileWriter fileWrite = new FileWriter(file, true);
         try ( BufferedWriter writer = new BufferedWriter(fileWrite)) {

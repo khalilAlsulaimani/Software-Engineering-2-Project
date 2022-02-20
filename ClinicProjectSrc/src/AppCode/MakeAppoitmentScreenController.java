@@ -77,10 +77,12 @@ public class MakeAppoitmentScreenController implements Initializable {
             outputMessage.setText("Empty TextField Detected");
         } else if (patiant.getPatiant(Integer.parseInt(patiantID.getText())) == null) {
             outputMessage.setText("Patiant ID Is Incorrect");
-        }else if(appoitmnet.checkIfBooked(hour.getValue(), gettedDatePickerDate,listOfDocs.get(selectedDoc).getId())){
+        } else if (appoitmnet.checkIfBooked(hour.getValue(), gettedDatePickerDate, listOfDocs.get(selectedDoc).getId())) {
             outputMessage.setText("Appoitment Already Booked With That Doctor On That Date and Time");
+        } else if (appoitmnet.getNumberOfBookingsOnDate(gettedDatePickerDate, Integer.parseInt(patiantID.getText())) > 3) {
+            outputMessage.setText("Appoitment Limit Of 3 A Day Reached");
         } else {
-            
+
             Patiant thePatiant = patiant.getPatiant(Integer.parseInt(patiantID.getText()));
             selectedDoc = doctorSelction.getSelectionModel().getSelectedIndex();
             int result = appoitmnet.bookAppoitment(hour.getValue(), gettedDatePickerDate, Integer.parseInt(patiantID.getText()), thePatiant.getFullName(),

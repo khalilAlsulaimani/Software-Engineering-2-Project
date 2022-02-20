@@ -85,7 +85,7 @@ public class LogInScreenController implements Initializable {
     private void loginLog(String who) {
 
         try {
-            File file = new File("D:\\1-Desktop\\uni\\Year 3\\Term 1\\Advanced Programming Practical\\Clinic Project\\logs" + date.format(now) + ".txt");
+            File file = new File("../../logs" + date.format(now) + ".txt");
 
             FileWriter fileWrite = new FileWriter(file, true);
             BufferedWriter writer = new BufferedWriter(fileWrite);
