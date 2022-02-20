@@ -1,0 +1,12 @@
+owner:
+username :OWN100
+password :a12345
+
+mannger: 
+username:MAN100
+password:a12345
+
+receptionist:
+username:REP100
+password:a12345
+
