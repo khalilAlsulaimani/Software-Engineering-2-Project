@@ -85,7 +85,7 @@ public class LogInScreenController implements Initializable {
     private void loginLog(String who) {
 
         try {
-            File file = new File("../../logs" + date.format(now) + ".txt");
+            File file = new File("../logs/" + date.format(now) + ".txt");
 
             FileWriter fileWrite = new FileWriter(file, true);
             BufferedWriter writer = new BufferedWriter(fileWrite);
@@ -93,7 +93,7 @@ public class LogInScreenController implements Initializable {
             writer.close();
 
         } catch (IOException ex) {
-            System.out.println("error");
+            System.out.println("Log Error");
         }
 
     }
