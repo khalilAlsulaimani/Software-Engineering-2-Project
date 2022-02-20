@@ -220,8 +220,7 @@ public class ReceptionScreenController implements Initializable {
                 outputMessage.setText("No Appoitments Have Been Booked Today");
 
             } else {
-                File file = new File("D:\\1-Desktop\\uni\\Year 3\\Advanced Programming Practical\\Clinic Project\\Prints\\"
-                        + date.format(now) + " " + "Appoitments Report" + ".txt");
+                File file = new File("../Prints/"+ date.format(now) + " " + "Appoitments Report" + ".txt");
 
                 FileWriter fileWrite = new FileWriter(file);
                 BufferedWriter writer = new BufferedWriter(fileWrite);
