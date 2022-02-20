@@ -57,6 +57,7 @@ public class AppoitmentQuary {
             numberOfAppoitmentsOnDate.setInt(2, ID);
             ResultSet resultSet = numberOfAppoitmentsOnDate.executeQuery();
             if (resultSet.next()) {
+                System.out.println(resultSet.getRow());
                 return resultSet.getRow();
             }
 
