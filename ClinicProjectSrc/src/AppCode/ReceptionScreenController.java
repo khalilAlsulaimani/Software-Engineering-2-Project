@@ -129,10 +129,10 @@ public class ReceptionScreenController implements Initializable {
                         Integer.parseInt(age.getText()), Integer.parseInt(number.getText()));
                 if (result == 1) {
                     outputMessage.setTextFill(Color.BLUE);
-                    outputMessage.setText("Patiant Added Succfully");
+                    outputMessage.setText("Patient Added Successfully");
                     clear();
                 } else {
-                    outputMessage.setText("Patiant Wasnt Added Succfully");
+                    outputMessage.setText("Patient Wasn’t Added Successfully");
 
                 }
             } catch (Exception e) {
