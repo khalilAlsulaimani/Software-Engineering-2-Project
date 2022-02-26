@@ -80,6 +80,7 @@ public class MakeAppoitmentScreenController implements Initializable {
         } else if (appoitmnet.checkIfBooked(hour.getValue(), gettedDatePickerDate, listOfDocs.get(selectedDoc).getId())) {
             outputMessage.setText("Appoitment Already Booked With That Doctor On That Date and Time");
         } else if (appoitmnet.getNumberOfBookingsOnDate(gettedDatePickerDate, Integer.parseInt(patiantID.getText())) < 3) {
+            System.out.println(appoitmnet.getNumberOfBookingsOnDate(gettedDatePickerDate, Integer.parseInt(patiantID.getText())));
             outputMessage.setText("Appoitment Limit Of 3 A Day Reached");
         } else {
 
