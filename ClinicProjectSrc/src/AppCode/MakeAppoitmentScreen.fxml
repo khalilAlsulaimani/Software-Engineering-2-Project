@@ -12,10 +12,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="579.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="AppCode.MakeAppoitmentScreenController">
+<AnchorPane id="AnchorPane" prefHeight="579.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppCode.MakeAppoitmentScreenController">
    <children>
-      <GridPane layoutX="74.0" layoutY="107.0" prefHeight="365.0" prefWidth="458.0" AnchorPane.leftAnchor="74.0">
+      <GridPane layoutX="74.0" layoutY="107.0" prefHeight="365.0" prefWidth="458.0" AnchorPane.bottomAnchor="106.39999999999998" AnchorPane.leftAnchor="74.0" AnchorPane.rightAnchor="267.6" AnchorPane.topAnchor="107.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -34,11 +33,11 @@
             <TextField fx:id="patiantID" GridPane.columnIndex="1" />
             <ComboBox fx:id="doctorSelction" prefHeight="26.0" prefWidth="235.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <DatePicker fx:id="date" prefHeight="26.0" prefWidth="241.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Spinner fx:id="hour" editable="true" nodeOrientation="LEFT_TO_RIGHT" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Spinner fx:id="hour" editable="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="231.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <Button layoutX="637.0" layoutY="266.0" mnemonicParsing="false" onAction="#makeAppoitment" text="Make Appoitment" />
-      <Label fx:id="outputMessage" alignment="CENTER" layoutX="-4.0" layoutY="52.0" prefHeight="18.0" prefWidth="800.0" textFill="RED">
+      <Button layoutX="637.0" layoutY="266.0" mnemonicParsing="false" onAction="#makeAppoitment" text="Make Appoitment" AnchorPane.bottomAnchor="287.4" AnchorPane.rightAnchor="51.0" AnchorPane.topAnchor="266.0" />
+      <Label fx:id="outputMessage" alignment="CENTER" layoutX="-4.0" layoutY="52.0" prefHeight="18.0" prefWidth="800.0" textFill="RED" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="4.0">
          <font>
             <Font name="Constantia" size="15.0" />
          </font>

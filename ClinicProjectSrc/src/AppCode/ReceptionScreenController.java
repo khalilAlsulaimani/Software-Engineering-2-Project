@@ -262,14 +262,14 @@ public class ReceptionScreenController implements Initializable {
             Patiant result = patiance.getPatiant(Integer.parseInt(searchID.getText()));
             if (result != null) {
                 errorLable.setTextFill(Color.BLUE);
-                errorLable.setText("Patiant Found Succfully");
+                errorLable.setText("Patiant Found Successfully");
                 foundName.setText(result.getFullName());
                 foundAge.setText(String.valueOf(result.getAge()));
                 foundNumber.setText(String.valueOf(result.getNumber()));
                 clear();
 
             } else {
-                errorLable.setText("Patiant Wasnt Found");
+                errorLable.setText("Patiant Wasn't Found");
                 clear();
 
             }

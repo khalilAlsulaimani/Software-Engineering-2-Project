@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AppCode.FirstLoginScreenController">
    <children>
-      <GridPane layoutX="142.0" layoutY="115.0" prefHeight="170.0" prefWidth="316.0">
+      <GridPane layoutX="142.0" layoutY="115.0" prefHeight="170.0" prefWidth="316.0" AnchorPane.bottomAnchor="114.6" AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="115.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -27,12 +27,12 @@
             <TextField fx:id="newPassword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Label layoutX="138.0" layoutY="40.0" text="Change Defult login Infromation :">
+      <Label layoutX="138.0" layoutY="40.0" text="Change Defult login Infromation :" AnchorPane.leftAnchor="138.0" AnchorPane.rightAnchor="137.2">
          <font>
             <Font name="Constantia" size="22.0" />
          </font>
       </Label>
-      <Button layoutX="252.0" layoutY="320.0" mnemonicParsing="false" onAction="#changeDefultLogin" text="Apply Changes" />
+      <Button layoutX="252.0" layoutY="320.0" mnemonicParsing="false" onAction="#changeDefultLogin" text="Apply Changes" AnchorPane.bottomAnchor="54.4" AnchorPane.leftAnchor="252.0" AnchorPane.rightAnchor="252.0" AnchorPane.topAnchor="320.0" />
       <Label fx:id="outputMessage" alignment="CENTER" layoutX="-1.0" layoutY="96.0" prefHeight="23.0" prefWidth="600.0" textFill="RED">
          <font>
             <Font name="Constantia" size="18.0" />

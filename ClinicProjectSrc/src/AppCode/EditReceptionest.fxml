@@ -18,7 +18,7 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="825.0">
                <children>
-                  <GridPane layoutY="103.0" prefHeight="324.0" prefWidth="474.0" AnchorPane.leftAnchor="100.0">
+                  <GridPane layoutY="103.0" prefHeight="324.0" prefWidth="474.0" AnchorPane.bottomAnchor="102.60000000000002" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="252.80000000000007" AnchorPane.topAnchor="103.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.79998779296875" minWidth="10.0" prefWidth="197.0" />
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="317.0" minWidth="10.0" prefWidth="277.0" />
@@ -40,7 +40,7 @@
                         <TextField fx:id="ReceptionestID" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
-                  <VBox layoutX="474.0" layoutY="165.0" prefHeight="200.0" prefWidth="100.0" spacing="55.0" AnchorPane.leftAnchor="650.0">
+                  <VBox layoutX="474.0" layoutY="165.0" prefHeight="200.0" prefWidth="100.0" spacing="55.0" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="77.20000000000005">
                      <children>
                         <Button mnemonicParsing="false" onAction="#addReceptionest" prefHeight="26.0" prefWidth="62.0" text="Add" />
                         <Button mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="62.0" text="Clear" />
