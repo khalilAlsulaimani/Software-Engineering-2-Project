@@ -43,7 +43,7 @@ public class AppoitmentQuary {
             bookAppoitment = connection.prepareStatement("INSERT INTO clinicdb.appoitment (time,date,patiantID,patiantName,doctorID,doctorName) "
                     + " VALUES (?,?,?,?,?,?)");
             checkIfBooked = connection.prepareStatement("SELECT * FROM clinicdb.appoitment WHERE TIME =? AND DATE =? and doctorID= ?");
-            numberOfAppoitmentsOnDate = connection.prepareStatement("SELECT COUNT(*) FROM clinicdb.appoitment where date =? and patiantID=?");
+            numberOfAppoitmentsOnDate = connection.prepareStatement("SELECT COUNT(*) as numberOfAppoitments FROM clinicdb.appoitment where date =? and patiantID=?");
 
         } catch (SQLException ex) {
             Logger.getLogger(AppoitmentQuary.class.getName()).log(Level.SEVERE, null, ex);
@@ -51,15 +51,17 @@ public class AppoitmentQuary {
     }
 
     public int getNumberOfBookingsOnDate(Date date, int ID) {
+        
 
         try {
             numberOfAppoitmentsOnDate.setDate(1, (java.sql.Date) date);
             numberOfAppoitmentsOnDate.setInt(2, ID);
+            
             ResultSet resultSet = numberOfAppoitmentsOnDate.executeQuery();
-            if (resultSet.next()) {
-                System.out.println(resultSet.getRow());
-                return resultSet.getRow();
-            }
+            resultSet.next();
+            int numberOfAppoitments = resultSet.getInt("numberOfAppoitments");
+            
+            return numberOfAppoitments;
 
         } catch (SQLException ex) {
             Logger.getLogger(AppoitmentQuary.class.getName()).log(Level.SEVERE, null, ex);

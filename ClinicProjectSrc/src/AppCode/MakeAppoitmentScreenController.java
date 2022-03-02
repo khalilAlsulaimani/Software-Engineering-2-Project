@@ -79,8 +79,7 @@ public class MakeAppoitmentScreenController implements Initializable {
             outputMessage.setText("Patiant ID Is Incorrect");
         } else if (appoitmnet.checkIfBooked(hour.getValue(), gettedDatePickerDate, listOfDocs.get(selectedDoc).getId())) {
             outputMessage.setText("Appoitment Already Booked With That Doctor On That Date and Time");
-        } else if (appoitmnet.getNumberOfBookingsOnDate(gettedDatePickerDate, Integer.parseInt(patiantID.getText())) < 3) {
-            System.out.println(appoitmnet.getNumberOfBookingsOnDate(gettedDatePickerDate, Integer.parseInt(patiantID.getText())));
+        } else if (appoitmnet.getNumberOfBookingsOnDate(gettedDatePickerDate, Integer.parseInt(patiantID.getText())) > 2) {
             outputMessage.setText("Appoitment Limit Of 3 A Day Reached");
         } else {
 
