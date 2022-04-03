@@ -2,3 +2,4 @@ logs/
 Prints/
 *.xml
 ClinicProjectSrc\build\classes/
+*.class
