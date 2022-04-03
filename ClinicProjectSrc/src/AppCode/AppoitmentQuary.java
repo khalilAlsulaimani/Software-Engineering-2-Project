@@ -22,7 +22,7 @@ import javafx.collections.ObservableList;
  *
  * @author alsul
  */
-public class AppoitmentQuary {
+public class AppoitmentQuary { 
 
     private static final String URL = "jdbc:mysql://localhost:3306/clinicdb";
     private final String user = "root";
