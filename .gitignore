@@ -1,3 +1,4 @@
 logs/
 Prints/
 *.xml
+*.class
