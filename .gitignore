@@ -3,3 +3,4 @@ Prints/
 *.xml
 ClinicProjectSrc\build\classes/
 *.class
+*.properties
