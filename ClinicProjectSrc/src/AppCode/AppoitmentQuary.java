@@ -22,12 +22,10 @@ import javafx.collections.ObservableList;
  *
  * @author alsul
  */
-public class AppoitmentQuary { 
+public class AppoitmentQuary {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/clinicdb";
-    private final String user = "root";
-    private final String pass = "3638";
-    private Connection connection;
+    DatabaseConnection dbConnect = new DatabaseConnection();
+    Connection connection = dbConnect.connection;
 
     private PreparedStatement getAllAppoitments;
     private PreparedStatement getTodaysAppoitments;
@@ -37,7 +35,7 @@ public class AppoitmentQuary {
 
     AppoitmentQuary() {
         try {
-            connection = DriverManager.getConnection(URL, user, pass);
+
             getAllAppoitments = connection.prepareStatement("SELECT * FROM clinicdb.appoitment");
             getTodaysAppoitments = connection.prepareStatement("SELECT * FROM clinicdb.appoitment WHERE  date=?");
             bookAppoitment = connection.prepareStatement("INSERT INTO clinicdb.appoitment (time,date,patiantID,patiantName,doctorID,doctorName) "
@@ -51,16 +49,15 @@ public class AppoitmentQuary {
     }
 
     public int getNumberOfBookingsOnDate(Date date, int ID) {
-        
 
         try {
             numberOfAppoitmentsOnDate.setDate(1, (java.sql.Date) date);
             numberOfAppoitmentsOnDate.setInt(2, ID);
-            
+
             ResultSet resultSet = numberOfAppoitmentsOnDate.executeQuery();
             resultSet.next();
             int numberOfAppoitments = resultSet.getInt("numberOfAppoitments");
-            
+
             return numberOfAppoitments;
 
         } catch (SQLException ex) {

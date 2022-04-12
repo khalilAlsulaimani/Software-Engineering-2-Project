@@ -21,11 +21,8 @@ import java.util.logging.Logger;
  */
 public class OwnerQuries {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/clinicdb";
-    private final String user = "root";
-    private final String pass = "3638";
-    private Connection connection;
-
+    DatabaseConnection dbConnect = new DatabaseConnection();
+    Connection connection = dbConnect.connection;
     private PreparedStatement getOwner;
     private PreparedStatement editUsername;
     private PreparedStatement editPassword;
@@ -36,7 +33,7 @@ public class OwnerQuries {
 
     public OwnerQuries() {
         try {
-            connection = DriverManager.getConnection(URL, user, pass);
+
             getOwner = connection.prepareStatement("SELECT * FROM  clinicdb.owner WHERE username = ?");
             editUsername = connection.prepareStatement("UPDATE  clinicdb.owner SET username =? where username = ?  ");
             editPassword = connection.prepareStatement("UPDATE  clinicdb.owner SET password =? where username = ?  ");

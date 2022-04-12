@@ -19,11 +19,8 @@ import java.util.logging.Logger;
  */
 public class ManngerQuries {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/clinicdb";
-    private final String user = "root";
-    private final String pass = "3638";
-    private Connection connection;
-
+    DatabaseConnection dbConnect = new DatabaseConnection();
+    Connection connection = dbConnect.connection;
     private PreparedStatement getMannger;
     private PreparedStatement editUsername;
     private PreparedStatement editPassword;
@@ -37,7 +34,7 @@ public class ManngerQuries {
 
     public ManngerQuries() {
         try {
-            connection = DriverManager.getConnection(URL, user, pass);
+
             getManngerName = connection.prepareStatement("SELECT fullName FROM clinicdb.mannger WHERE username = ?");
             getMannger = connection.prepareStatement("SELECT * FROM  clinicdb.mannger WHERE username = ?");
             editUsername = connection.prepareStatement("UPDATE  clinicdb.mannger SET username =? where username = ?  ");

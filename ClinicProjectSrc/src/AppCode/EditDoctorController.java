@@ -36,7 +36,6 @@ public class EditDoctorController implements Initializable {
     private TextField deleteDocID;
 
     private DoctorQuries doctor = new DoctorQuries();
-    private OwnerScreenController owner = new OwnerScreenController();
 
     /**
      * Initializes the controller class.

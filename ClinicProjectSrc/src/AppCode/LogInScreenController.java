@@ -47,6 +47,9 @@ public class LogInScreenController implements Initializable {
     private DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm:ss");
     private DateTimeFormatter date = DateTimeFormatter.ofPattern("yyy-MM-dd");
     private LocalDateTime now = LocalDateTime.now();
+    
+    
+    private Logger logger = new Logger();
 
     private void changeScreen(ActionEvent event, String who) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
@@ -82,21 +85,7 @@ public class LogInScreenController implements Initializable {
         errorLabel.setText("Invalid Email Or Password Please Trye again ");
     }
 
-    private void loginLog(String who) {
-
-        try {
-            File file = new File("../logs/" + date.format(now) + ".txt");
-
-            FileWriter fileWrite = new FileWriter(file, true);
-            BufferedWriter writer = new BufferedWriter(fileWrite);
-            writer.write(who + ": " + " Logged In At " + time.format(now) + "\n---------------------------------\n");
-            writer.close();
-
-        } catch (IOException ex) {
-            System.out.println("Log Error");
-        }
-
-    }
+   
 
     private void isFirstLogin(ActionEvent event, String who, String username) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
@@ -131,7 +120,7 @@ public class LogInScreenController implements Initializable {
     private void login(String username, String password, ActionEvent event) throws IOException {
         if (username.startsWith("OWN") || username.startsWith("own")) {
             if (owner.login(usernameInput.getText(), passwordInput.getText())) {
-                loginLog(username);
+                logger.loginLog(username);
                 changeScreen(event, "own");
                 if (owner.isFirstLogin(usernameInput.getText())) {
                     isFirstLogin(event, "own", username);
@@ -142,7 +131,7 @@ public class LogInScreenController implements Initializable {
 
         } else if (username.startsWith("MAN") || username.startsWith("man")) {
             if (mannger.login(usernameInput.getText(), passwordInput.getText())) {
-                loginLog(username);
+                logger.loginLog(username);
                 changeScreen(event, "man");
                 if (mannger.isFirstLogin(usernameInput.getText())) {
                     isFirstLogin(event, "man", username);
@@ -153,7 +142,7 @@ public class LogInScreenController implements Initializable {
             }
         } else if (username.startsWith("REP") || username.startsWith("rep")) {
             if (receptionest.login(usernameInput.getText(), passwordInput.getText())) {
-                loginLog(username);
+                logger.loginLog(username);
                 changeScreen(event, "rep");
                 if (receptionest.isFirstLogin(usernameInput.getText())) {
                     isFirstLogin(event, "rep", username);

@@ -21,10 +21,8 @@ import java.util.logging.Logger;
  */
 public class ReceptionQuries {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/clinicdb";
-    private final String user = "root";
-    private final String pass = "3638";
-    private Connection connection;
+    DatabaseConnection dbConnect = new DatabaseConnection();
+    Connection connection = dbConnect.connection;
 
     private PreparedStatement getReceptionist;
     private PreparedStatement editUsername;
@@ -38,7 +36,6 @@ public class ReceptionQuries {
 
     public ReceptionQuries() {
         try {
-            connection = DriverManager.getConnection(URL, user, pass);
 
             deleteReceptionest = connection.prepareStatement("DELETE FROM clinicdb.receptionist WHERE username = ?");
             getReceptionist = connection.prepareStatement("SELECT * FROM  clinicdb.receptionist WHERE username = ?");
@@ -54,8 +51,8 @@ public class ReceptionQuries {
             ex.printStackTrace();
         }
     }
-    
-     public boolean isFirstLogin(String username) {
+
+    public boolean isFirstLogin(String username) {
         try {
             isFirstLogin.setString(1, username);
             ResultSet result = isFirstLogin.executeQuery();

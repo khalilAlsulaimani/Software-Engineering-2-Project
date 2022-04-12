@@ -41,9 +41,7 @@ public class OwnerScreenController implements Initializable {
 
     private String ownerUsername;
 
-    private DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm:ss");
-    private DateTimeFormatter date = DateTimeFormatter.ofPattern("yyy-MM-dd");
-    private LocalDateTime now = LocalDateTime.now();
+    private Logger logger = new Logger();
 
     private OwnerQuries owner = new OwnerQuries();
     private ReceptionQuries repceptionest = new ReceptionQuries();
@@ -75,12 +73,7 @@ public class OwnerScreenController implements Initializable {
     @FXML
     private void logOut(ActionEvent event) throws IOException {
 
-        File file = new File("../logs/" + date.format(now) + ".txt");
-
-        FileWriter fileWrite = new FileWriter(file, true);
-        try (BufferedWriter writer = new BufferedWriter(fileWrite)) {
-            writer.write(ownerUsername + ": " + " Logged Out At " + time.format(now) + "\n---------------------------------\n");
-        }
+       logger.logOutLog(ownerUsername);
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
         ((Node) event.getSource()).getScene().getWindow().hide();

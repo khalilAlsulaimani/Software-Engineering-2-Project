@@ -46,9 +46,7 @@ public class ManngerScreenController implements Initializable {
     private PatiantQuries patiantt = new PatiantQuries();
     private ReceptionQuries Reception = new ReceptionQuries();
 
-    private DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm:ss");
-    private DateTimeFormatter date = DateTimeFormatter.ofPattern("yyy-MM-dd");
-    private LocalDateTime now = LocalDateTime.now();
+   private Logger logger = new Logger();
 
     public void getManngerUsername(String username) {
         welcomeLabel.setText("Welcome Back " + mannger.getManngerName(username));
@@ -75,12 +73,7 @@ public class ManngerScreenController implements Initializable {
     @FXML
     private void logOut(ActionEvent event) throws IOException {
         
-        File file = new File("../logs/" + date.format(now) + ".txt");
-
-        FileWriter fileWrite = new FileWriter(file, true);
-        try (BufferedWriter writer = new BufferedWriter(fileWrite)) {
-            writer.write(manngerUsername + ": " + " Logged Out At " + time.format(now) + "\n---------------------------------\n");
-        }
+       logger.logOutLog(manngerUsername);
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
         ((Node) event.getSource()).getScene().getWindow().hide();
 

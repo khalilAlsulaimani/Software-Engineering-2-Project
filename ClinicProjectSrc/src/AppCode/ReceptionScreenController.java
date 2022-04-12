@@ -61,6 +61,8 @@ public class ReceptionScreenController implements Initializable {
     private DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm:ss");
     private DateTimeFormatter date = DateTimeFormatter.ofPattern("yyy-MM-dd");
     private LocalDateTime now = LocalDateTime.now();
+    
+    private Logger logger = new Logger();
     @FXML
     private TextField number;
     @FXML
@@ -186,12 +188,7 @@ public class ReceptionScreenController implements Initializable {
 
     @FXML
     private void logOut(ActionEvent event) throws IOException {
-        File file = new File("../logs/" + date.format(now) + ".txt");
-
-        FileWriter fileWrite = new FileWriter(file, true);
-        try ( BufferedWriter writer = new BufferedWriter(fileWrite)) {
-            writer.write(repsUsername + ": " + " Logged Out At " + time.format(now) + "\n---------------------------------\n");
-        }
+       logger.logOutLog(repsUsername);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LogInScreen.fxml"));
         ((Node) event.getSource()).getScene().getWindow().hide();

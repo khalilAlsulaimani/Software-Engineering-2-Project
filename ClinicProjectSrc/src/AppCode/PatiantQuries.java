@@ -21,10 +21,8 @@ import java.util.logging.Logger;
  */
 public class PatiantQuries {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/clinicdb";
-    private final String user = "root";
-    private final String pass = "3638";
-    private Connection connection;
+    DatabaseConnection dbConnect = new DatabaseConnection();
+    Connection connection = dbConnect.connection;
 
     private PreparedStatement getpatiant;
     private PreparedStatement addpatiant;
@@ -33,7 +31,6 @@ public class PatiantQuries {
 
     public PatiantQuries() {
         try {
-            connection = DriverManager.getConnection(URL, user, pass);
 
             getpatiant = connection.prepareStatement("SELECT * FROM  clinicdb.patiant WHERE id = ?");
             addpatiant = connection.prepareStatement("INSERT INTO clinicdb.patiant VALUES(?,?,?,?,?)");
@@ -76,12 +73,12 @@ public class PatiantQuries {
         return numOfReps;
     }
 
-    public int addPatiant(int id, String fullName,int doctorID, int age, int number) {
+    public int addPatiant(int id, String fullName, int doctorID, int age, int number) {
 
         try {
             addpatiant.setInt(1, id);
             addpatiant.setString(2, fullName);
-            addpatiant.setInt(3,doctorID);
+            addpatiant.setInt(3, doctorID);
             addpatiant.setInt(4, age);
             addpatiant.setInt(5, number);
             addpatiant.executeUpdate();

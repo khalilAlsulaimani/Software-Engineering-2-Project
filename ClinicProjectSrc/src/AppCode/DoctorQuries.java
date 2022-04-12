@@ -23,10 +23,8 @@ import javafx.collections.ObservableList;
  */
 public class DoctorQuries {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/clinicdb";
-    private final String user = "root";
-    private final String pass = "3638";
-    private Connection connection;
+  DatabaseConnection dbConnect = new DatabaseConnection();
+  Connection connection = dbConnect.connection;
 
     private PreparedStatement getDoctor;
     private PreparedStatement addDoctor;
@@ -36,8 +34,6 @@ public class DoctorQuries {
 
     public DoctorQuries() {
         try {
-            connection = DriverManager.getConnection(URL, user, pass);
-
             getAll = connection.prepareStatement("SELECT * FROM clinicdb.doctor ");
             getDoctor = connection.prepareStatement("SELECT * FROM  clinicdb.doctor WHERE id = ?");
             deleteDoctor = connection.prepareStatement("DELETE FROM clinicdb.doctor WHERE id = ?");
@@ -127,7 +123,7 @@ public class DoctorQuries {
         return numOfDocs;
     }
     
-    public void rollback(){
+  public void rollback(){
         try {
             autoCommitFalse();
             connection.rollback();
