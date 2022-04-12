@@ -4,3 +4,7 @@ Prints/
 ClinicProjectSrc\build\classes/
 *.class
 *.properties
+ClinicProjectSrc/build/test/classes/.netbeans_update_resources
+ClinicProjectSrc/build/test/classes/.netbeans_automatic_build
+*.properties
+ClinicProjectSrc/nbproject/private/private.properties

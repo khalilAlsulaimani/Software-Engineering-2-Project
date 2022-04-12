@@ -90,9 +90,12 @@ public class DoctorQuries {
             addDoctor.executeUpdate();
             return 1;
         } catch (SQLException ex) {
-            Logger.getLogger(DoctorQuries.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error :"
+                    + "Doctor ID ALready Exists");
+            
         }
         return 0;
+       
 
     }
 
@@ -103,9 +106,11 @@ public class DoctorQuries {
             return 1;
         } catch (SQLException ex) {
             Logger.getLogger(DoctorQuries.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
-
         return 0;
+
+        
     }
 
     public int NumOfDoctors() {
@@ -120,6 +125,23 @@ public class DoctorQuries {
         }
 
         return numOfDocs;
+    }
+    
+    public void rollback(){
+        try {
+            autoCommitFalse();
+            connection.rollback();
+        } catch (SQLException ex) {
+            Logger.getLogger(DoctorQuries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void autoCommitFalse(){
+        try {
+            connection.setAutoCommit(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(DoctorQuries.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
