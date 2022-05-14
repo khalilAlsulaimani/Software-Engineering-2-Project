@@ -19,24 +19,30 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author khalil
  */
 public class AppoitmentQuaryTest {
-    
+
     public AppoitmentQuaryTest() {
     }
-    
+
     @BeforeAll
     public static void setUpClass() {
     }
-    
+
     @AfterAll
     public static void tearDownClass() {
+        AppoitmentQuary instance = new AppoitmentQuary();
+        instance.rollback();
     }
-    
+
     @BeforeEach
     public void setUp() {
+        AppoitmentQuary instance = new AppoitmentQuary();
+        instance.autoCommitFalse();
     }
-    
+
     @AfterEach
     public void tearDown() {
+        AppoitmentQuary instance = new AppoitmentQuary();
+        instance.rollback();
     }
 
     /**
@@ -44,15 +50,17 @@ public class AppoitmentQuaryTest {
      */
     @Test
     public void testGetNumberOfBookingsOnDate() {
+        long millis = System.currentTimeMillis();
+        Date sqlDate = new Date(millis);
         System.out.println("getNumberOfBookingsOnDate");
         Date date = null;
-        int ID = 0;
+        int ID = 23;
         AppoitmentQuary instance = new AppoitmentQuary();
         int expResult = 0;
-        int result = instance.getNumberOfBookingsOnDate(date, ID);
+        instance.bookAppoitment(0, sqlDate, ID, "TestPatient", 2, "TestDoctor");
+        int result = instance.getNumberOfBookingsOnDate(sqlDate, ID);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -120,5 +128,5 @@ public class AppoitmentQuaryTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
 }
