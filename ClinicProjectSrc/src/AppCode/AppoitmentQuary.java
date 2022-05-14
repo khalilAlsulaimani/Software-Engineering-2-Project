@@ -98,14 +98,14 @@ public class AppoitmentQuary {
 
     }
 
-    public int bookAppoitment(int time, Date date, int patiantID, String patiantName, int doctorID, String dotorName) {
+    public int bookAppoitment(int time, Date date, int patiantID, String patiantName, int doctorID, String doctorName) {
         try {
             bookAppoitment.setInt(1, time);
             bookAppoitment.setDate(2, (java.sql.Date) date);
             bookAppoitment.setInt(3, patiantID);
             bookAppoitment.setString(4, patiantName);
             bookAppoitment.setInt(5, doctorID);
-            bookAppoitment.setString(6, dotorName);
+            bookAppoitment.setString(6, doctorName);
             bookAppoitment.executeUpdate();
 
             return 1;
@@ -133,5 +133,22 @@ public class AppoitmentQuary {
         System.out.println("Trueeee");
         return false;
 
+    }
+
+    void rollback() {
+        try {
+            autoCommitFalse();
+            connection.rollback();
+        } catch (SQLException ex) {
+            Logger.getLogger(DoctorQuries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    void autoCommitFalse() {
+        try {
+            connection.setAutoCommit(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(DoctorQuries.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

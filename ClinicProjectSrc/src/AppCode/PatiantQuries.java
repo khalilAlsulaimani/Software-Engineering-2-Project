@@ -89,5 +89,22 @@ public class PatiantQuries {
         return 0;
 
     }
+    
+     void rollback() {
+        try {
+            autoCommitFalse();
+            connection.rollback();
+        } catch (SQLException ex) {
+            Logger.getLogger(DoctorQuries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    void autoCommitFalse() {
+        try {
+            connection.setAutoCommit(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(DoctorQuries.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }
