@@ -54,7 +54,6 @@ public class DoctorQuriesTest {
         Doctor expResult = null;
         Doctor result = instance.getDoctor(id);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
 
     }
 
@@ -75,7 +74,7 @@ public class DoctorQuriesTest {
         } catch (Exception ex) {
 
         }
-        // TODO review the generated test code and remove the default call to fail.
+        
 
     }
 
@@ -94,7 +93,7 @@ public class DoctorQuriesTest {
         int result = instance.addDoctor(id, fullName, field);
         assertEquals(expResult, result);
 
-        // TODO review the generated test code and remove the default call to fail.
+        
     }
 
     /**
@@ -109,7 +108,7 @@ public class DoctorQuriesTest {
         instance.autoCommitFalse();
         int result = instance.deleteDoc(id);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
+        
 
     }
 
@@ -123,7 +122,7 @@ public class DoctorQuriesTest {
         int expResult = 3;
         int result = instance.NumOfDoctors();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
+        
 
     }
 
